@@ -13,7 +13,7 @@ jobs:
 
     env:
       BASE_URL: ${{ secrets.BASE_URL }}
-      USERNAME: ${{ secrets.USERNAME }}
+      LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME }}
       PASSWORD: ${{ secrets.PASSWORD }}
 
     steps:
