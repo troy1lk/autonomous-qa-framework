@@ -2,7 +2,7 @@
 
 **Date:** 2026-06-29  
 **Orchestrator:** Autonomous QA Orchestrator  
-**Decision:** Add Phase 1 module smoke tests (SMK-09, SMK-10, SMK-11)
+**User constraint:** Do not add new tests unless clearly necessary
 
 ---
 
@@ -10,81 +10,76 @@
 
 | Metric | Value |
 |--------|-------|
-| Smoke tests | 9 (`@smoke`) |
-| Full suite | 10 (+ setup) |
-| Module coverage | 6 / 12 (50%) |
-| Last release status | GO (all passing) |
+| Smoke tests (`@smoke`) | 12 (setup + 11 SMK scenarios) |
+| Full suite | 13 (+ 1 positive login, not `@smoke`) |
+| Page objects | 13 |
+| Module coverage | 9 / 12 (75%) |
+| Last smoke run | 12/12 passed |
 | Open defects | 0 |
 
 **Sources reviewed:**
-- `ai/reports/application-map.md` — Phase 1 priorities: Buzz, Time, Recruitment
-- `ai/reports/coverage-analysis.md` — 6 modules uncovered
-- `ai/reports/release-qa-report.md` — recommends Buzz SMK-09 next
-- `ai/reports/application-explore-raw.json` — URLs, headings, UI elements per module
+- `ai/reports/application-map.md` — 12 modules mapped; Phase 1 (Buzz, Time, Recruitment) implemented
+- `ai/reports/coverage-analysis.md` — **stale** (still reflects 25% / 4-test baseline)
+- `ai/reports/release-qa-report.md` — **stale** (still reflects 50% / 9-smoke baseline)
+- `tests/`, `pages/`, `fixtures/`, `helpers/`, `playwright.config.ts`
 
 ---
 
 ## Decision
 
-**Action: Add new smoke tests (SMK-09, SMK-10, SMK-11)**
+**Action: Produce reports only — refresh coverage analysis and release QA report**
 
 | Option considered | Why not chosen |
 |-------------------|----------------|
-| Directory search smoke | Lower module-gap closure than 3 uncovered modules |
-| Performance SMK-12 | Medium priority per application map |
-| CI/reporting improvements | Tests passing; coverage gap is higher value |
-| Report only | Application map already exists; implementation needed |
+| Add SMK-12 Performance smoke | User requested no new tests unless clearly necessary; 75% coverage is adequate for current release |
+| Add Directory search smoke | Functional depth improvement, not required for report refresh |
+| Heal flaky tests | All 12 smoke + 13 full-suite tests passing |
+| CI/reporting changes | Pipeline already aligned with `@smoke` |
+| Page object improvements | No failures or gaps blocking release |
 
-**Rationale:** Best value-to-risk ratio — three read-only module landing tests close 25% of the coverage gap (50% → 75%) with minimal flakiness risk. Aligns with application-map Phase 1 and release report recommendations.
+**Rationale:** Coverage and release reports are materially out of date after SMK-09–11. Refreshing documentation is the highest-value, lowest-risk action. The suite is green; no code changes are warranted.
 
 ---
 
 ## Implementation Plan
 
-### 1. Page objects (new)
+### 1. Refresh `ai/reports/coverage-analysis.md`
 
-| File | Verifications |
-|------|---------------|
-| `pages/BuzzPage.ts` | URL `/buzz/`, buzz feed/post content visible |
-| `pages/TimePage.ts` | URL `/time/`, Timesheets heading, pending table |
-| `pages/RecruitmentPage.ts` | URL `/recruitment/viewCandidates`, Candidates heading, table |
+- Update metrics to 12-test smoke / 13-test full suite
+- Document all 11 SMK scenarios and covered modules (75%)
+- Revise gap analysis: remaining uncovered modules (My Info, Performance, Maintenance, Claim)
+- Update recommended next tests (de-prioritise already-implemented items)
 
-### 2. SideNav extensions
+### 2. Refresh `ai/reports/release-qa-report.md`
 
-- `goToBuzz()` → `waitForURL(/buzz/)`
-- `goToTime()` → `waitForURL(/time/)`
-- `goToRecruitment()` → `waitForURL(/recruitment\/viewCandidates/)`
+- Re-run `npm run test:smoke` and `npm test` for current pass/fail evidence
+- Update executive summary, test inventory, coverage summary, risks
+- Maintain **GO** recommendation with updated 75% module coverage
 
-### 3. Smoke tests (new)
-
-| ID | File |
-|----|------|
-| SMK-09 | `tests/e2e/buzz.smoke.spec.ts` |
-| SMK-10 | `tests/e2e/time.smoke.spec.ts` |
-| SMK-11 | `tests/e2e/recruitment.smoke.spec.ts` |
-
-### 4. Test execution
+### 3. Test execution (verification only)
 
 ```bash
 npm run test:smoke
+npm test
 ```
 
-### 5. Deliverables
+### 4. Deliverables
 
+- `ai/reports/coverage-analysis.md` (refreshed)
+- `ai/reports/release-qa-report.md` (refreshed)
 - `ai/reports/orchestrator-execution-summary.md` (post-run)
 
 ---
 
 ## Safety
 
-- Read-only navigation and assertions only
-- No Maintenance, no Add/Submit buttons clicked
-- No employee data mutation
+- No test code changes
+- No application interaction beyond existing automated runs
 
 ---
 
 ## Success Criteria
 
-- All smoke tests pass (12 total including setup)
-- New page objects follow existing POM patterns
-- `@smoke` tag on all new tests for CI alignment
+- Coverage analysis reflects current 12-test smoke suite and 75% module coverage
+- Release QA report reflects latest test results and GO recommendation
+- All smoke tests pass (no regressions)
