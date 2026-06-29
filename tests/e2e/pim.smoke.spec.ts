@@ -1,14 +1,17 @@
-import { test } from '@playwright/test';
-import { loginAsAdmin } from '../../helpers/auth.helper';
+import { test } from '../../fixtures/authenticated.fixture';
 import { PimPage } from '../../pages/PimPage';
 import { SideNav } from '../../pages/SideNav';
 
-test('SMK-02 Admin can access PIM Employee List', async ({ page }) => {
-  await loginAsAdmin(page);
+test.describe('OrangeHRM Smoke @smoke', () => {
+  test.describe.configure({ mode: 'serial' });
 
-  const sideNav = new SideNav(page);
-  await sideNav.goToPim();
+  test('SMK-02 Admin can access PIM Employee List', async ({
+    authenticatedPage,
+  }) => {
+    const sideNav = new SideNav(authenticatedPage);
+    await sideNav.goToPim();
 
-  const pimPage = new PimPage(page);
-  await pimPage.verifyEmployeeListLoaded();
+    const pimPage = new PimPage(authenticatedPage);
+    await pimPage.verifyEmployeeListLoaded();
+  });
 });

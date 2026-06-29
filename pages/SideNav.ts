@@ -1,4 +1,3 @@
-import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class SideNav extends BasePage {
@@ -19,7 +18,7 @@ export class SideNav extends BasePage {
 
   async goToLeave() {
     await this.leaveLink.click();
-    await this.page.waitForURL(/leave/);
+    await this.page.waitForURL(/leave\/viewLeaveList/);
   }
 
   async goToDirectory() {

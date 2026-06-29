@@ -1,18 +1,36 @@
 import { expect, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { AppLayout } from './AppLayout';
 
 export class DashboardPage extends BasePage {
+  private layout: AppLayout;
+
   pageHeading = this.page.getByRole('heading', { name: 'Dashboard' });
-  timeAtWorkWidget = this.page.getByText('Time at Work', { exact: true });
-  quickLaunchWidget = this.page.getByText('Quick Launch', { exact: true });
-  buzzWidget = this.page.getByText('Buzz Latest Posts', { exact: true });
+  timeAtWorkWidget = this.page
+    .locator('.orangehrm-dashboard-widget')
+    .filter({ hasText: /^Time at Work$/ })
+    .first();
+  quickLaunchWidget = this.page
+    .locator('.orangehrm-dashboard-widget')
+    .filter({ hasText: /^Quick Launch$/ })
+    .first();
+  buzzWidget = this.page
+    .locator('.orangehrm-dashboard-widget')
+    .filter({ hasText: /^Buzz Latest Posts$/ })
+    .first();
 
   constructor(page: Page) {
     super(page);
+    this.layout = new AppLayout(page);
+  }
+
+  async open() {
+    await this.page.goto('/web/index.php/dashboard/index');
+    await this.page.waitForURL(/dashboard/);
   }
 
   async verifyDashboardLoaded() {
-    await expect(this.page).toHaveURL(/dashboard/);
+    await this.layout.verifyLoggedIn();
     await expect(this.pageHeading).toBeVisible();
     await expect(this.timeAtWorkWidget).toBeVisible();
     await expect(this.quickLaunchWidget).toBeVisible();

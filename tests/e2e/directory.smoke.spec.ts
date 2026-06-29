@@ -1,14 +1,17 @@
-import { test } from '@playwright/test';
-import { loginAsAdmin } from '../../helpers/auth.helper';
+import { test } from '../../fixtures/authenticated.fixture';
 import { DirectoryPage } from '../../pages/DirectoryPage';
 import { SideNav } from '../../pages/SideNav';
 
-test('SMK-03 Admin can access Employee Directory', async ({ page }) => {
-  await loginAsAdmin(page);
+test.describe('OrangeHRM Smoke @smoke', () => {
+  test.describe.configure({ mode: 'serial' });
 
-  const sideNav = new SideNav(page);
-  await sideNav.goToDirectory();
+  test('SMK-03 Admin can access Employee Directory', async ({
+    authenticatedPage,
+  }) => {
+    const sideNav = new SideNav(authenticatedPage);
+    await sideNav.goToDirectory();
 
-  const directoryPage = new DirectoryPage(page);
-  await directoryPage.verifyDirectoryLoaded();
+    const directoryPage = new DirectoryPage(authenticatedPage);
+    await directoryPage.verifyDirectoryLoaded();
+  });
 });

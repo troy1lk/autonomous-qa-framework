@@ -1,10 +1,13 @@
-import { test } from '@playwright/test';
-import { loginAsAdmin } from '../../helpers/auth.helper';
+import { test } from '../../fixtures/authenticated.fixture';
 import { DashboardPage } from '../../pages/DashboardPage';
 
-test('SMK-01 Dashboard displays core widgets after login', async ({ page }) => {
-  await loginAsAdmin(page);
+test.describe('OrangeHRM Smoke @smoke', () => {
+  test.describe.configure({ mode: 'serial' });
 
-  const dashboardPage = new DashboardPage(page);
-  await dashboardPage.verifyDashboardLoaded();
+  test('SMK-01 Dashboard displays core widgets after login', async ({
+    authenticatedPage,
+  }) => {
+    const dashboardPage = new DashboardPage(authenticatedPage);
+    await dashboardPage.verifyDashboardLoaded();
+  });
 });

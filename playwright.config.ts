@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
+import { AUTH_STORAGE_PATH } from './helpers/auth.helper';
 
 dotenv.config();
 
@@ -29,9 +30,23 @@ export default defineConfig({
 
   projects: [
     {
+      name: 'setup',
+      testMatch: /auth\.setup\.ts/
+    },
+    {
       name: 'chromium',
+      testIgnore: [/e2e\//, /auth\.setup\.ts/, /example\.spec\.ts/],
       use: {
         ...devices['Desktop Chrome']
+      }
+    },
+    {
+      name: 'e2e',
+      testMatch: /e2e\/.*\.spec\.ts/,
+      dependencies: ['setup'],
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: AUTH_STORAGE_PATH
       }
     }
   ]
