@@ -6,6 +6,9 @@ export class SideNav extends BasePage {
   pimLink = this.page.getByRole('link', { name: 'PIM', exact: true });
   leaveLink = this.page.getByRole('link', { name: 'Leave', exact: true });
   directoryLink = this.page.getByRole('link', { name: 'Directory', exact: true });
+  timeLink = this.page.getByRole('link', { name: 'Time', exact: true });
+  recruitmentLink = this.page.getByRole('link', { name: 'Recruitment', exact: true });
+  buzzLink = this.page.getByRole('link', { name: 'Buzz' });
 
   async goToDashboard() {
     await this.dashboardLink.click();
@@ -30,5 +33,20 @@ export class SideNav extends BasePage {
   async goToDirectory() {
     await this.directoryLink.click();
     await this.page.waitForURL(/directory\/viewDirectory/);
+  }
+
+  async goToTime() {
+    await this.timeLink.click();
+    await this.page.waitForURL(/time\//);
+  }
+
+  async goToRecruitment() {
+    await this.recruitmentLink.click();
+    await this.page.waitForURL(/recruitment\/viewCandidates/);
+  }
+
+  async goToBuzz() {
+    await this.buzzLink.click();
+    await this.page.waitForURL(/buzz/);
   }
 }

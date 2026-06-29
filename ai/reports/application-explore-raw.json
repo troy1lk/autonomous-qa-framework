@@ -1,0 +1,285 @@
+[
+  {
+    "module": "Admin",
+    "title": "OrangeHRM",
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers",
+    "headings": [
+      "Admin",
+      "User Management",
+      "System Users"
+    ],
+    "topNavLinks": [
+      "Nationalities",
+      "Corporate Branding"
+    ],
+    "tables": 1,
+    "textboxCount": 3,
+    "textboxSamples": [
+      "Search",
+      "(unnamed)",
+      "Type for hints..."
+    ],
+    "searchHintFields": 1,
+    "filterDropdowns": 2,
+    "buttons": [
+      "Upgrade",
+      "Reset",
+      "Search",
+      "Add"
+    ],
+    "recordsText": "(4) Records Found"
+  },
+  {
+    "module": "PIM",
+    "title": "OrangeHRM",
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
+    "headings": [
+      "PIM",
+      "Employee Information"
+    ],
+    "topNavLinks": [
+      "Employee List",
+      "Add Employee",
+      "Reports"
+    ],
+    "tables": 1,
+    "textboxCount": 4,
+    "textboxSamples": [
+      "Search",
+      "Type for hints...",
+      "(unnamed)",
+      "Type for hints..."
+    ],
+    "searchHintFields": 2,
+    "filterDropdowns": 4,
+    "buttons": [
+      "Upgrade",
+      "Reset",
+      "Search",
+      "Add"
+    ],
+    "recordsText": "(95) Records Found"
+  },
+  {
+    "module": "Leave",
+    "title": "OrangeHRM",
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList",
+    "headings": [
+      "Leave",
+      "Leave List"
+    ],
+    "topNavLinks": [
+      "Apply",
+      "My Leave",
+      "Leave List",
+      "Assign Leave"
+    ],
+    "tables": 1,
+    "textboxCount": 4,
+    "textboxSamples": [
+      "Search",
+      "yyyy-dd-mm",
+      "yyyy-dd-mm",
+      "Type for hints..."
+    ],
+    "searchHintFields": 1,
+    "filterDropdowns": 3,
+    "buttons": [
+      "Upgrade",
+      "Reset",
+      "Search"
+    ],
+    "recordsText": "No Records Found"
+  },
+  {
+    "module": "Time",
+    "title": "OrangeHRM",
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet",
+    "headings": [
+      "Time",
+      "Timesheets",
+      "Select Employee",
+      "Timesheets Pending Action"
+    ],
+    "topNavLinks": [],
+    "tables": 1,
+    "textboxCount": 2,
+    "textboxSamples": [
+      "Search",
+      "Type for hints..."
+    ],
+    "searchHintFields": 1,
+    "filterDropdowns": 0,
+    "buttons": [
+      "Upgrade",
+      "View"
+    ],
+    "recordsText": "(3) Records Found"
+  },
+  {
+    "module": "Recruitment",
+    "title": "OrangeHRM",
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates",
+    "headings": [
+      "Recruitment",
+      "Candidates"
+    ],
+    "topNavLinks": [
+      "Candidates",
+      "Vacancies"
+    ],
+    "tables": 1,
+    "textboxCount": 5,
+    "textboxSamples": [
+      "Search",
+      "Type for hints...",
+      "Enter comma seperated words...",
+      "From",
+      "To"
+    ],
+    "searchHintFields": 1,
+    "filterDropdowns": 5,
+    "buttons": [
+      "Upgrade",
+      "Reset",
+      "Search",
+      "Add"
+    ],
+    "recordsText": "(63) Records Found"
+  },
+  {
+    "module": "My Info",
+    "title": "OrangeHRM",
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7",
+    "headings": [
+      "PIM",
+      "Personal Details",
+      "Attachments"
+    ],
+    "topNavLinks": [],
+    "tables": 1,
+    "textboxCount": 9,
+    "textboxSamples": [
+      "Search",
+      "First Name",
+      "Middle Name",
+      "Last Name",
+      "(unnamed)",
+      "(unnamed)",
+      "(unnamed)",
+      "yyyy-dd-mm"
+    ],
+    "searchHintFields": 0,
+    "filterDropdowns": 2,
+    "buttons": [
+      "Upgrade",
+      "Save",
+      "Add"
+    ],
+    "recordsText": null
+  },
+  {
+    "module": "Performance",
+    "title": "OrangeHRM",
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview",
+    "headings": [
+      "Performance",
+      "Manage Reviews",
+      "Employee Reviews"
+    ],
+    "topNavLinks": [
+      "My Trackers",
+      "Employee Trackers"
+    ],
+    "tables": 1,
+    "textboxCount": 4,
+    "textboxSamples": [
+      "Search",
+      "Type for hints...",
+      "yyyy-dd-mm",
+      "yyyy-dd-mm"
+    ],
+    "searchHintFields": 1,
+    "filterDropdowns": 4,
+    "buttons": [
+      "Upgrade",
+      "Reset",
+      "Search"
+    ],
+    "recordsText": "No Records Found"
+  },
+  {
+    "module": "Dashboard",
+    "title": "OrangeHRM",
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
+    "headings": [
+      "Dashboard"
+    ],
+    "topNavLinks": [],
+    "tables": 0,
+    "textboxCount": 1,
+    "textboxSamples": [
+      "Search"
+    ],
+    "searchHintFields": 0,
+    "filterDropdowns": 0,
+    "buttons": [
+      "Upgrade"
+    ],
+    "recordsText": null
+  },
+  {
+    "module": "Directory",
+    "title": "OrangeHRM",
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory",
+    "headings": [
+      "Directory",
+      "Directory"
+    ],
+    "topNavLinks": [],
+    "tables": 0,
+    "textboxCount": 2,
+    "textboxSamples": [
+      "Search",
+      "Type for hints..."
+    ],
+    "searchHintFields": 1,
+    "filterDropdowns": 2,
+    "buttons": [
+      "Upgrade",
+      "Reset",
+      "Search"
+    ],
+    "recordsText": "No Records Found"
+  },
+  {
+    "module": "Maintenance",
+    "title": "OrangeHRM",
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee",
+    "headings": [
+      "Administrator Access"
+    ],
+    "topNavLinks": [],
+    "tables": 0,
+    "textboxCount": 2,
+    "textboxSamples": [
+      "username",
+      "password"
+    ],
+    "searchHintFields": 0,
+    "filterDropdowns": 0,
+    "buttons": [
+      "Cancel",
+      "Confirm"
+    ],
+    "recordsText": null
+  },
+  {
+    "module": "Claim",
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('link', { name: 'Claim', exact: true })\n"
+  },
+  {
+    "module": "Buzz",
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('link', { name: 'Buzz', exact: true })\n"
+  }
+]
